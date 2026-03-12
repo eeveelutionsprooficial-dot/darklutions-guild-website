@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darklutions Guild</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        header { background: #333; color: #fff; padding: 10px 20px; }
+        nav { display: flex; justify-content: space-between; }
+        .tabs { margin-top: 20px; }
+        .tab { padding: 10px 15px; cursor: pointer; border: 1px solid #ddd; display: inline-block; }
+        .active { background: #ddd; }
+        .content { padding: 20px; }
+        .admin-login { display: none; }
+        @media (max-width: 600px) { nav { flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div><h1>Darklutions Guild</h1></div>
+            <div class="tabs">
+                <div class="tab active" onclick="showContent('announcements')">Announcements</div>
+                <div class="tab" onclick="showContent('admin')">Admin Dashboard</div>
+            </div>
+        </nav>
+    </header>
+    <div class="content">
+        <div id="announcements">
+            <h2>Announcements</h2>
+            <p>Welcome to the Darklutions Guild website! Stay tuned for updates.</p>
+        </div>
+        <div id="admin-login" class="admin-login">
+            <h2>Admin Dashboard</h2>
+            <form onsubmit="return validateAdmin();">
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+    </div>
+    <script>
+        function showContent(content) {
+            document.getElementById('announcements').style.display = 'none';
+            document.getElementById('admin-login').style.display = 'none';
+            if (content === 'announcements') {
+                document.getElementById('announcements').style.display = 'block';
+            } else if (content === 'admin') {
+                document.getElementById('admin-login').style.display = 'block';
+            }
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            document.querySelector(`.tab:contains('${content.charAt(0).toUpperCase() + content.slice(1)}')`).classList.add('active');
+        }
+
+        function validateAdmin() {
+            const password = document.getElementById('password').value;
+            if (password === 'your_admin_password') { // Change this to your actual admin password
+                alert('Welcome to Admin Dashboard!');
+                // Add your admin dashboard functionality here
+            } else {
+                alert('Incorrect password.');
+            }
+            return false; // Prevent form submission
+        }
+
+        // Initialize with announcements tab visible
+        showContent('announcements');
+    </script>
+</body>
+</html>
