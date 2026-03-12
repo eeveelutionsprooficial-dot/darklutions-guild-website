@@ -1,0 +1,1 @@
+{\n  "name": "darklutions-guild-website",\n  "version": "1.0.0",\n  "main": "server.js",\n  "scripts": {\n    "start": "node server.js"\n  },\n  "dependencies": {\n    "express": "^4.17.1",\n    "bcrypt": "^5.0.1",\n    "dotenv": "^10.0.0",\n    "cors": "^2.8.5"\n  }\n}
