@@ -1,0 +1,16 @@
+# Cloudflare Pages Configuration
+
+# Build Settings
+[build]
+  command = "npm install && npm run build"
+  functions = "functions"
+  publish = "dist"
+
+# Environment Variables
+[build.environment]
+  NODE_VERSION = "16"
+
+# Routes
+[[routes]]
+  src = "/*"
+  dest = "index.html"
